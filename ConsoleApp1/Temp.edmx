@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Temp.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="TempTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Temp" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="TempContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RoleSet" EntityType="Temp.Role" />
+          <EntitySet Name="UserSet" EntityType="Temp.User" />
+          <EntitySet Name="BasePostSet" EntityType="Temp.BasePost" />
+          <EntitySet Name="BaseCategorySet" EntityType="Temp.BaseCategory" />
+          <AssociationSet Name="PostCategory" Association="Temp.PostCategory">
+            <End Role="Post" EntitySet="BasePostSet" />
+            <End Role="Category" EntitySet="BaseCategorySet" />
+          </AssociationSet>
+          <AssociationSet Name="UserRole" Association="Temp.UserRole">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Role" EntitySet="RoleSet" />
+          </AssociationSet>
+          <EntitySet Name="FavoritePostsSet" EntityType="Temp.FavoritePosts" />
+          <AssociationSet Name="FavoritePostsUser" Association="Temp.FavoritePostsUser">
+            <End Role="FavoritePosts" EntitySet="FavoritePostsSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="FavoritePostsPost" Association="Temp.FavoritePostsPost">
+            <End Role="FavoritePosts" EntitySet="FavoritePostsSet" />
+            <End Role="Post" EntitySet="BasePostSet" />
+          </AssociationSet>
+          <AssociationSet Name="PostUser" Association="Temp.PostUser">
+            <End Role="Post" EntitySet="BasePostSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Temp.UserRole" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Temp.UserRole" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="FavoritePosts" Relationship="Temp.FavoritePostsUser" FromRole="User" ToRole="FavoritePosts" />
+          <NavigationProperty Name="Post" Relationship="Temp.PostUser" FromRole="User" ToRole="Post" />
+          <Property Name="LikeCounter" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BasePost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Category" Relationship="Temp.PostCategory" FromRole="Post" ToRole="Category" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="LikeCounter" Type="String" Nullable="false" />
+          <Property Name="Viwes" Type="String" Nullable="false" />
+          <NavigationProperty Name="FavoritePosts" Relationship="Temp.FavoritePostsPost" FromRole="Post" ToRole="FavoritePosts" />
+          <NavigationProperty Name="Author" Relationship="Temp.PostUser" FromRole="Post" ToRole="User" />
+          <Property Name="DislikeCounter" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BaseCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Post" Relationship="Temp.PostCategory" FromRole="Category" ToRole="Post" />
+        </EntityType>
+        <Association Name="PostCategory">
+          <End Type="Temp.BasePost" Role="Post" Multiplicity="1" />
+          <End Type="Temp.BaseCategory" Role="Category" Multiplicity="*" />
+        </Association>
+        <Association Name="UserRole">
+          <End Type="Temp.User" Role="User" Multiplicity="1" />
+          <End Type="Temp.Role" Role="Role" Multiplicity="*" />
+        </Association>
+        <EntityType Name="FavoritePosts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="Temp.FavoritePostsUser" FromRole="FavoritePosts" ToRole="User" />
+          <NavigationProperty Name="Post" Relationship="Temp.FavoritePostsPost" FromRole="FavoritePosts" ToRole="Post" />
+        </EntityType>
+        <Association Name="FavoritePostsUser">
+          <End Type="Temp.FavoritePosts" Role="FavoritePosts" Multiplicity="1" />
+          <End Type="Temp.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="FavoritePostsPost">
+          <End Type="Temp.FavoritePosts" Role="FavoritePosts" Multiplicity="1" />
+          <End Type="Temp.BasePost" Role="Post" Multiplicity="*" />
+        </Association>
+        <Association Name="PostUser">
+          <End Type="Temp.BasePost" Role="Post" Multiplicity="1" />
+          <End Type="Temp.User" Role="User" Multiplicity="*" />
+        </Association>
+        <EntityType Name="SitePost" BaseType="Temp.BasePost" >
+          <Property Name="isApproved" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SiteCategory" BaseType="Temp.BaseCategory" >
+          <Property Name="isApproved" Type="String" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Temp" />
+        <Alias Key="Target" Value="Temp.Store" />
+        <EntityContainerMapping CdmEntityContainer="TempContainer" StorageEntityContainer="TempTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

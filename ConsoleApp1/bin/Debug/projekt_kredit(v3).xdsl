@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network5" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="praca_w_instytucjach_rzadowych">
+			<state id="tak" />
+			<state id="nie" />
+			<probabilities>0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="wyksztalcenie">
+			<state id="wyzcie" />
+			<state id="srednie" />
+			<probabilities>0.85 0.15</probabilities>
+		</cpt>
+		<cpt id="praca">
+			<state id="stala" />
+			<state id="dynamiczna_" />
+			<probabilities>0.85 0.15</probabilities>
+		</cpt>
+		<cpt id="doswiadczenie_zawodowe">
+			<state id="mniej_5l_lat" />
+			<state id="wyzciej_5l_lat" />
+			<parents>wyksztalcenie praca</parents>
+			<probabilities>0.3157894736842105 0.6842105263157895 0.2871362940275651 0.7128637059724349 0.3961352657004831 0.6038647342995169 0.2777777777777777 0.7222222222222223</probabilities>
+		</cpt>
+		<cpt id="wynagrodzenie">
+			<state id="niskie" />
+			<state id="srednie" />
+			<state id="wysokie" />
+			<parents>praca_w_instytucjach_rzadowych doswiadczenie_zawodowe</parents>
+			<probabilities>0.08350060216780408 0.3444399839421919 0.572059413890004 0.097087379 0.29126214 0.61165049 0.09842064392690494 0.318740176389478 0.582839179683617 0.08839388314328649 0.2651816494298594 0.646424467426854</probabilities>
+		</cpt>
+		<cpt id="posiadanie_wlasnosci">
+			<state id="nie_posiada" />
+			<state id="ruchome" />
+			<state id="nieruchome" />
+			<parents>wynagrodzenie</parents>
+			<probabilities>0 0.2631578947368421 0.736842105263158 0 0.25 0.75 0 0.1836734693877551 0.8163265306122449</probabilities>
+		</cpt>
+		<cpt id="wiek">
+			<state id="mniej_26" />
+			<state id="wyzciej_26" />
+			<probabilities>0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="stan_cywilny">
+			<state id="kawaler" />
+			<state id="zonaty" />
+			<parents>wiek</parents>
+			<probabilities>0.7 0.3 0.6 0.4</probabilities>
+		</cpt>
+		<cpt id="KREDYT_ZA_ZGODA_WSPOLMALZONKA">
+			<state id="tak" />
+			<state id="nie" />
+			<parents>stan_cywilny</parents>
+			<probabilities>0.5 0.5 0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="cudoziemiec">
+			<state id="tak" />
+			<state id="nie" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="dzieci">
+			<state id="mniej_2_dzieci" />
+			<state id="wyzciej_2_dzieci" />
+			<parents>wiek stan_cywilny</parents>
+			<probabilities>1 0 0.85 0.15 1 0 0.35 0.65</probabilities>
+		</cpt>
+		<cpt id="poziom_wydatkow">
+			<state id="wysoki" />
+			<state id="niski" />
+			<parents>dzieci wynagrodzenie</parents>
+			<probabilities>0.41 0.59 0.39 0.61 0.35 0.65 0.21 0.79 0.25 0.75 0.32 0.68</probabilities>
+		</cpt>
+		<cpt id="posiadanie_karty_pobytu_tymczasowego">
+			<state id="tak" />
+			<state id="nie" />
+			<parents>stan_cywilny cudoziemiec</parents>
+			<probabilities>0.4 0.6 0.4 0.6 0.8 0.2 0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="poreczycieli">
+			<state id="ma" />
+			<state id="nie_ma" />
+			<probabilities>0.6666666666666666 0.3333333333333334</probabilities>
+		</cpt>
+		<cpt id="obywatelstwo">
+			<state id="Unii_E" />
+			<state id="Inne" />
+			<parents>posiadanie_karty_pobytu_tymczasowego poreczycieli</parents>
+			<probabilities>0.6586345381526105 0.3413654618473895 0.35 0.65 0.625 0.375 0.4166666666666667 0.5833333333333333</probabilities>
+		</cpt>
+		<cpt id="historia_kredytowa">
+			<state id="ma" />
+			<state id="nie_ma" />
+			<probabilities>0.65 0.35</probabilities>
+		</cpt>
+		<cpt id="istnienie_naleznosci_przeterminowanych">
+			<state id="tak" />
+			<state id="nie" />
+			<parents>historia_kredytowa</parents>
+			<probabilities>0.25 0.75 0.15 0.85</probabilities>
+		</cpt>
+		<cpt id="KREDYT_ZA_ZGODA_WSPOLMALZONKA_2">
+			<state id="posiada" />
+			<state id="nie_posiada" />
+			<probabilities>0.09090909090909091 0.9090909090909091</probabilities>
+		</cpt>
+		<noisymax id="wydanie_pozyczki">
+			<state id="wydanie" />
+			<state id="odrzucenie" />
+			<parents>istnienie_naleznosci_przeterminowanych historia_kredytowa KREDYT_ZA_ZGODA_WSPOLMALZONKA_2 wynagrodzenie praca poreczycieli posiadanie_wlasnosci poziom_wydatkow KREDYT_ZA_ZGODA_WSPOLMALZONKA</parents>
+			<strengths>0 1 0 1 0 1 0 1 2 0 1 0 1 0 1 2 0 1 0 1</strengths>
+			<parameters>0.03190917968749996 0.9680908203125 0 1 0.03203124999999996 0.96796875 0 1 0.03203124999999996 0.96796875 0 1 0.03447265624999996 0.96552734375 0.03447265624999996 0.96552734375 0 1 0.03203124999999996 0.96796875 0 1 0.03203124999999996 0.96796875 0 1 0.03459472656249996 0.9654052734375 0.03459472656249996 0.9654052734375 0 1 0.03203124999999996 0.96796875 0 1 0.03203124999999996 0.96796875 0 1 0.3045654296875 0.6954345703125</parameters>
+		</noisymax>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.2.2414.0 ACADEMIC" name="Network5" faultnameformat="nodestate">
+			<node id="posiadanie_wlasnosci">
+				<name>posiadanie wlasnosci</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>207 55 293 111</position>
+			</node>
+			<node id="wynagrodzenie">
+				<name>wynagrodzenie</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>64 183 152 238</position>
+			</node>
+			<node id="dzieci">
+				<name>dzieci</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>243 268 289 296</position>
+			</node>
+			<node id="praca_w_instytucjach_rzadowych">
+				<name>praca w instytucjach rzadowych</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>61 9 160 70</position>
+			</node>
+			<node id="poziom_wydatkow">
+				<name>poziom wydatkow</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>346 176 445 237</position>
+			</node>
+			<node id="obywatelstwo">
+				<name>obywatelstwo</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>862 357 944 408</position>
+			</node>
+			<node id="posiadanie_karty_pobytu_tymczasowego">
+				<name>posiadanie_karty_pobytu_tymczasowego</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>772 253 890 301</position>
+			</node>
+			<node id="doswiadczenie_zawodowe">
+				<name>doswiadczenie zawodowe</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>441 79 537 139</position>
+			</node>
+			<node id="stan_cywilny">
+				<name>stan cywilny</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>502 353 577 399</position>
+			</node>
+			<node id="poreczycieli">
+				<name>poreczycieli</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>856 507 927 551</position>
+			</node>
+			<node id="wiek">
+				<name>wiek</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>550 446 592 472</position>
+			</node>
+			<node id="historia_kredytowa">
+				<name>historia kredytowa</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>50 480 151 543</position>
+			</node>
+			<node id="wydanie_pozyczki">
+				<name>wydanie pozyczki</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>556 502 655 563</position>
+			</node>
+			<node id="KREDYT_ZA_ZGODA_WSPOLMALZONKA">
+				<name>KREDYT ZA ZGODA WSPOLMALZONKA</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>605 177 732 256</position>
+			</node>
+			<node id="praca">
+				<name>praca</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>550 6 641 57</position>
+			</node>
+			<node id="wyksztalcenie">
+				<name>wyksztalcenie</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>347 9 429 60</position>
+			</node>
+			<node id="KREDYT_ZA_ZGODA_WSPOLMALZONKA_2">
+				<name>spory sadowe</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>709 350 836 429</position>
+			</node>
+			<node id="istnienie_naleznosci_przeterminowanych">
+				<name>istnienie naleznosci przeterminowanych</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>285 435 400 506</position>
+			</node>
+			<node id="cudoziemiec">
+				<name>cudoziemiec</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>804 138 877 183</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

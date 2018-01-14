@@ -1,0 +1,21 @@
+d:\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+d:\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+d:\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+d:\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.dll
+d:\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.SqlServer.dll
+d:\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.xml
+d:\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.SqlServer.xml
+d:\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
+d:\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+d:\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.dll
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\bin\Debug\smileNET.dll
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.xml
+C:\Users\MyPC\Desktop\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.SqlServer.xml
